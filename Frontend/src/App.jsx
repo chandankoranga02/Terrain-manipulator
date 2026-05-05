@@ -46,6 +46,7 @@ const Controller = () => {
       speed: parseInt(speed),
       arm_mode: armMode,
     };
+    fetch()
 
     console.log('Sending payload:', payload);
   }, [directions, pickRelease, moveContinuousBack, moveContinuous, gripperSpeed, speed, armMode]);
