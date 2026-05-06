@@ -8,6 +8,7 @@ const Controller = () => {
     left: false,
     right: false,
   });
+  const backUrl="blabla.com"
 
   const [pickRelease, setPickRelease] = useState(false);
   const [moveContinuousBack, setMoveContinuousBack] = useState(false);
@@ -46,7 +47,13 @@ const Controller = () => {
       speed: parseInt(speed),
       arm_mode: armMode,
     };
-    fetch()
+    fetch(`${backUrl}`, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)).then((res)=>res.json()).then((data)=>console.log(data)).catch((err)=>console.log("Error in sending the data:",err))
 
     console.log('Sending payload:', payload);
   }, [directions, pickRelease, moveContinuousBack, moveContinuous, gripperSpeed, speed, armMode]);
